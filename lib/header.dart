@@ -59,7 +59,7 @@ class _HeaderState extends State<Header> {
     );
   }
 
-  Color getItemsColor(ChoiceItem item){
+  Color getItemsColor(ChoiceItem item) {
     return Colors.grey;
   }
 }

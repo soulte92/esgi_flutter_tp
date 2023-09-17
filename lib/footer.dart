@@ -18,7 +18,6 @@ class Footer extends StatefulWidget {
 }
 
 class _FooterState extends State<Footer> {
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -30,23 +29,23 @@ class _FooterState extends State<Footer> {
           direction: Axis.horizontal,
           spacing: 10,
           runSpacing: 5,
-          children: widget.items.map((item) =>
-              ChoiceItem(
-                itemName: item.itemName,
-                onTap: () {
-                  widget.onItemTap(item);
-                },
-                itemColor: getItemColor(item),
+          children: widget.items
+              .map(
+                (item) => ChoiceItem(
+                  itemName: item.itemName,
+                  onTap: () {
+                    widget.onItemTap(item);
+                  },
+                  itemColor: getItemColor(item),
+                ),
               )
-          ).toList(),
+              .toList(),
         ),
       ),
     );
   }
 
-  Color getItemColor(ChoiceItem item){
-    return widget.selectedItems.contains(item)
-        ? Colors.orange
-        : Colors.grey;
+  Color getItemColor(ChoiceItem item) {
+    return widget.selectedItems.contains(item) ? Colors.orange : Colors.grey;
   }
 }
