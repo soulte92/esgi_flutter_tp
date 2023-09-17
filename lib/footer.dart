@@ -36,13 +36,17 @@ class _FooterState extends State<Footer> {
                 onTap: () {
                   widget.onItemTap(item);
                 },
-                itemColor: widget.selectedItems.contains(item)
-                    ? Colors.orange
-                    : Colors.grey,
+                itemColor: getItemColor(item),
               )
           ).toList(),
         ),
       ),
     );
+  }
+
+  MaterialColor getItemColor(ChoiceItem item){
+    return widget.selectedItems.contains(item)
+        ? Colors.orange
+        : Colors.grey;
   }
 }

@@ -67,7 +67,6 @@ class _MyHomePageState extends State<MyHomePage> {
   ];
   List<ChoiceItem> selectedItems = [];
 
-  // Callback to handle item tap.
   void onChoiceItemTap(ChoiceItem item) {
     setState(() {
       if (selectedItems.contains(item)) {
