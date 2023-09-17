@@ -44,7 +44,7 @@ class _FooterState extends State<Footer> {
     );
   }
 
-  MaterialColor getItemColor(ChoiceItem item){
+  Color getItemColor(ChoiceItem item){
     return widget.selectedItems.contains(item)
         ? Colors.orange
         : Colors.grey;

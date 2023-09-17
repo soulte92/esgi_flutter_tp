@@ -93,6 +93,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           children: [
             Expanded(
+              flex: 2,
               child: Header(
                 selectedItems: selectedItems,
               ),

@@ -29,7 +29,7 @@ class _HeaderState extends State<Header> {
   Widget headerContent() {
     if (widget.selectedItems.isEmpty) {
       return const Padding(
-        padding: EdgeInsets.only(left: 10.0),
+        padding: EdgeInsets.only(left: 5.0),
         child: Text(
           'Cliquez sur les choix en dessous !',
           style: TextStyle(
@@ -51,11 +51,15 @@ class _HeaderState extends State<Header> {
           children: widget.selectedItems.map((item) {
             return ChoiceItem(
               itemName: item.itemName,
-              itemColor: Colors.grey,
+              itemColor: getItemsColor(item),
             );
           }).toList(),
         ),
       ),
     );
+  }
+
+  Color getItemsColor(ChoiceItem item){
+    return Colors.grey;
   }
 }
