@@ -42,6 +42,42 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  List<ChoiceItem> items = [
+    ChoiceItem(
+      itemName: 'cinema',
+    ),
+    ChoiceItem(
+      itemName: 'petanque',
+    ),
+    ChoiceItem(
+      itemName: 'fitness',
+    ),
+    ChoiceItem(
+      itemName: 'League Of Legend',
+    ),
+    ChoiceItem(
+      itemName: 'basket',
+    ),
+    ChoiceItem(
+      itemName: 'shopping',
+    ),
+    ChoiceItem(
+      itemName: 'programmation',
+    ),
+  ];
+  List<ChoiceItem> selectedItems = [];
+
+  // Callback to handle item tap.
+  void onChoiceItemTap(ChoiceItem item) {
+    setState(() {
+      if (selectedItems.contains(item)) {
+        selectedItems.remove(item);
+      } else {
+        selectedItems.add(item);
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,14 +90,20 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
       ),
-      body: const SafeArea(
+      body: SafeArea(
         child: Column(
           children: [
             Expanded(
-              child: Header(),
+              child: Header(
+                selectedItems: selectedItems,
+              ),
             ),
             Expanded(
-              child: Footer(),
+              child: Footer(
+                selectedItems: selectedItems,
+                items: items,
+                onItemTap: onChoiceItemTap,
+              ),
             ),
           ],
         ),

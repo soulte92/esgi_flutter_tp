@@ -3,7 +3,12 @@ import 'package:flutter/material.dart';
 import 'choice_item.dart';
 
 class Header extends StatefulWidget {
-  const Header({super.key});
+  const Header({
+    super.key,
+    required this.selectedItems,
+  });
+
+  final List<ChoiceItem> selectedItems;
 
   @override
   State<Header> createState() => _HeaderState();
@@ -22,7 +27,7 @@ class _HeaderState extends State<Header> {
   }
 
   Widget headerContent() {
-    if (chooseItems.isEmpty) {
+    if (widget.selectedItems.isEmpty) {
       return const Padding(
         padding: EdgeInsets.only(left: 10.0),
         child: Text(
@@ -38,12 +43,17 @@ class _HeaderState extends State<Header> {
       width: double.maxFinite,
       color: Colors.transparent,
       child: Padding(
-        padding: EdgeInsets.all(15),
+        padding: const EdgeInsets.all(15),
         child: Wrap(
           direction: Axis.horizontal,
           spacing: 10,
           runSpacing: 5,
-          children: chooseItems,
+          children: widget.selectedItems.map((item) {
+            return ChoiceItem(
+              itemName: item.itemName,
+              itemColor: Colors.grey,
+            );
+          }).toList(),
         ),
       ),
     );
